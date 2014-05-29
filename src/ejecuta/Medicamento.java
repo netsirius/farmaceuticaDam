@@ -9,7 +9,9 @@ package ejecuta;
  * @author DAM
  */
 import java.util.*;
-public class Medicamento {
+public class Medicamento{
+
+  
     enum Receta {
     // Tipos de Medicamento.
     CONRECETA, SINRECETA;
@@ -21,6 +23,34 @@ public class Medicamento {
     private Double precio;
     private Receta receta;
     private ArrayList principios=new ArrayList<Principio>();
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Calendar getFechaFab() {
+        return fechaFab;
+    }
+
+    public Calendar getFechaCad() {
+        return fechaCad;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public Receta getReceta() {
+        return receta;
+    }
+
+    public ArrayList getPrincipios() {
+        return principios;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -52,6 +82,8 @@ public class Medicamento {
         this.unidades = unidades;
     }
     
-    
+    public void mostrarMedicamento(){
+        
+    }
     
 }
