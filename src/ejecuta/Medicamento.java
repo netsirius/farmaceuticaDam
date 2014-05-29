@@ -44,8 +44,8 @@ public class Medicamento {
 
     }
 
-    public void setPrincipios(ArrayList principios) {
-        this.principios = principios;
+    public void setPrincipios(Principio p) {
+        this.principios.add(p);
     }
 
     public void setUnidades(int unidades) {
