@@ -4,10 +4,13 @@
  */
 package ejecuta;
 
+import java.util.Calendar;
+
 /**
  *
  * @author DAM
  */
 public class Principio {
-    
+    private String nombre;
+    private double miligramos;
 }
