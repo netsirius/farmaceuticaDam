@@ -11,4 +11,21 @@ package ejecuta;
 public class Principio {
     private String nombre;
     private double miligramos;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setMiligramos(double miligramos) {
+        this.miligramos = miligramos;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getMiligramos() {
+        return miligramos;
+    }
+    
 }
