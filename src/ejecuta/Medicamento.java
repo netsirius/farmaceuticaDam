@@ -9,9 +9,7 @@ package ejecuta;
  * @author DAM
  */
 import java.util.*;
-public class Medicamento{
-
-  
+public class Medicamento implements Comparable{
     enum Receta {
     // Tipos de Medicamento.
     CONRECETA, SINRECETA;
@@ -83,6 +81,17 @@ public class Medicamento{
     }
     
     public void mostrarMedicamento(){
+        
+    }
+    
+     @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     @Override
+    public boolean equals(Object o){
+        
+        return false;
         
     }
     
