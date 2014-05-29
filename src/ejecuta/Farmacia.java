@@ -24,8 +24,26 @@ public class Farmacia {
     unidades de cada lote.
      * 
      */
-    
-    
+     Scanner teclado=new Scanner(System.in);             
+     System.out.print("Introduzca el nombre del medicamento: ");
+     String nombre=teclado.nextLine();
+     if(medicamentos.contains(nombre)){
+         
+     }
+     else{
+         Medicamento m=new Medicamento();
+         m.setNombre(nombre);
+         System.out.print("Introduzca la fecha de fabricacion: ");
+         m.setFechaFab(null);
+         System.out.print("Introduzca la fecha de caducidad: ");
+         m.setFechaFab(null);
+         System.out.print("Introduzca el precio del medicamento: ");
+         m.setPrecio(teclado.nextDouble());
+         teclado.nextLine();
+         System.out.print("Introduzca si tiene receta o no Y/N ");
+         nombre=teclado.nextLine();
+         if(nombre.equals("Y"))m.setReceta(0);
+     }
     
     
     };
