@@ -38,9 +38,10 @@ public class Medicamento {
         this.precio = precio;
     }
 
-    public void setReceta(int receta) {
-        if(receta==0)this.receta = Receta.SINRECETA;
-        if(receta==1)this.receta = Receta.CONRECETA;
+    public void setReceta(String receta) {
+        if(receta.equals("N"))this.receta = Receta.SINRECETA;
+        if(receta.equals("Y"))this.receta = Receta.CONRECETA;
+
     }
 
     public void setPrincipios(ArrayList principios) {
