@@ -26,13 +26,13 @@ public class Farmacia {
      */
      Scanner teclado=new Scanner(System.in);             
      System.out.print("Introduzca el nombre del medicamento: ");
-     String nombre=teclado.nextLine();
-     if(medicamentos.contains(nombre)){
+     String aux=teclado.nextLine();
+     if(medicamentos.contains(aux)){
          
      }
      else{
          Medicamento m=new Medicamento();
-         m.setNombre(nombre);
+         m.setNombre(aux);
          System.out.print("Introduzca la fecha de fabricacion: ");
          m.setFechaFab(null);
          System.out.print("Introduzca la fecha de caducidad: ");
@@ -40,9 +40,12 @@ public class Farmacia {
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
          teclado.nextLine();
-         System.out.print("Introduzca si tiene receta o no Y/N ");
-         nombre=teclado.nextLine();
-         if(nombre.equals("Y"))m.setReceta(0);
+         System.out.print("Introduzca si tiene receta o no Y/N:");
+         aux=teclado.nextLine();
+         m.setReceta(aux);
+         System.out.print("Introduzca el numero de unidades: ");
+         m.setUnidades(teclado.nextInt());
+  
      }
     
     
