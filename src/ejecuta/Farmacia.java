@@ -40,12 +40,22 @@ public class Farmacia {
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
          teclado.nextLine();
-         System.out.print("Introduzca si tiene receta o no Y/N:");
-         aux=teclado.nextLine();
-         m.setReceta(aux);
+         System.out.print("Introduzca si tiene receta o no Y/N:");  
+         m.setReceta(teclado.nextLine());
          System.out.print("Introduzca el numero de unidades: ");
          m.setUnidades(teclado.nextInt());
-  
+         teclado.nextLine();
+                //EMPEZAMOS CON LOS PRINCIPIOS
+                Principio p=new Principio();
+                while(!p.getNombre().equals("Q")){
+                    p=new Principio();
+                    System.out.print("Introduzca el nombre del principio:");
+                    p.setNombre(teclado.nextLine());
+                    System.out.print("Introduzca el numero de miligramos: ");
+                    p.setMiligramos(teclado.nextDouble());
+                    teclado.nextLine();
+                    m.setPrincipios(p);
+               }
      }
     
     
