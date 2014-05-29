@@ -28,7 +28,15 @@ public class Farmacia {
      System.out.print("Introduzca el nombre del medicamento: ");
      String aux=teclado.nextLine();
      if(medicamentos.contains(aux)){
-         
+         System.out.println("Medicamento ya existente actualice unidades y precio");
+         Medicamento aux2=(Medicamento)medicamentos.get(medicamentos.indexOf(aux));
+         System.out.print("Unidades:");
+         aux2.setUnidades(teclado.nextInt());
+         teclado.nextLine();
+         System.out.print("Precio:");
+         aux2.setPrecio(teclado.nextDouble());
+         teclado.nextLine();
+         medicamentos.set(medicamentos.indexOf(aux), aux2);
      }
      else{
          Medicamento m=new Medicamento();
@@ -67,6 +75,11 @@ public class Farmacia {
     buscara por la palabra “ibu”, le mostraría todos los medicamentos que contengan “ibu” en el 
     nombre).
     */
+        
+        for (int i = 0; i < medicamentos.size(); i++) {
+        Medicamento m=(Medicamento)medicamentos.get(i);
+        if(m.getNombre().contains(nombre))m.mostrarMedicamento();    
+        }
         
          
         
