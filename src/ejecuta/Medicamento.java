@@ -54,9 +54,7 @@ public class Medicamento implements Comparable{
         this.principios.add(p);
     }
 
-    public void setUnidades(int unidades) {
-        this.unidades = unidades;
-    }
+    
     
     public void mostrarMedicamento(){
         
