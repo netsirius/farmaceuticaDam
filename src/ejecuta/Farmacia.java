@@ -30,29 +30,34 @@ public class Farmacia {
      if(medicamentos.contains(aux)){
          System.out.println("Medicamento ya existente actualice unidades y precio");
          Medicamento aux2=(Medicamento)medicamentos.get(medicamentos.indexOf(aux));
-         System.out.print("Unidades:");
-         aux2.setUnidades(teclado.nextInt());
-         teclado.nextLine();
-         System.out.print("Precio:");
+         System.out.print("Desea Actualizar el Precio Y/N:");
+         if(teclado.nextLine().equals("Y")){
+         System.out.print("Introduzca el nuevo precio del medicamento: ");
          aux2.setPrecio(teclado.nextDouble());
          teclado.nextLine();
+         }
+         Lote l=new Lote();
+         System.out.print("Introduzca la fecha de fabricacion: ");
+         l.setFechaFab(null);
+         System.out.print("Introduzca la fecha de caducidad: ");
+         l.setFechaFab(null);
+         aux2.setLotes(l);
          medicamentos.set(medicamentos.indexOf(aux), aux2);
      }
      else{
          Medicamento m=new Medicamento();
+         Lote l=new Lote();
          m.setNombre(aux);
          System.out.print("Introduzca la fecha de fabricacion: ");
-         m.setFechaFab(null);
+         l.setFechaFab(null);
          System.out.print("Introduzca la fecha de caducidad: ");
-         m.setFechaFab(null);
+         l.setFechaFab(null);
+         m.setLotes(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
          teclado.nextLine();
          System.out.print("Introduzca si tiene receta o no Y/N:");  
          m.setReceta(teclado.nextLine());
-         System.out.print("Introduzca el numero de unidades: ");
-         m.setUnidades(teclado.nextInt());
-         teclado.nextLine();
                 //EMPEZAMOS CON LOS PRINCIPIOS
                 Principio p=new Principio();
                 while(!p.getNombre().equals("Q")){
