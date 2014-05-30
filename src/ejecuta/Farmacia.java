@@ -69,12 +69,15 @@ public class Farmacia {
                 p.setNombre("vacio");
                 while(!p.getNombre().equals("Q")){
                     p=new Principio();
-                    System.out.print("Introduzca el nombre del principio:");
+                    System.out.print("Introduzca el nombre del principio (PARA SALIR PULSE Q):");
+                    String leer=teclado.nextLine();
+                    if(!leer.equals("Q")){
                     p.setNombre(teclado.nextLine());
                     System.out.print("Introduzca el numero de miligramos: ");
                     p.setMiligramos(teclado.nextDouble());
                     teclado.nextLine();
                     m.setPrincipios(p);
+                    }
                }
                medicamentos.add(m);
      }
