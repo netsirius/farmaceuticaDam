@@ -41,9 +41,7 @@ public class Farmacia {
          }
          Lote l=new Lote();
          l.setFechaFab(gc);
-         System.out.println(gc.get(gc.DATE));
          gc.add(Calendar.DATE, caduca);
-         System.out.println(gc.get(gc.DATE));
          l.setFechaCad(gc);
          aux2.setLotes(l);
          medicamentos.set(medicamentos.indexOf(aux), aux2);
@@ -53,8 +51,10 @@ public class Farmacia {
          Lote l=new Lote();
          m.setNombre(aux);
          l.setFechaFab(gc);
+         System.out.println(gc.get(gc.DATE)+gc.get(gc.MONTH));
          gc.add(Calendar.DATE, caduca);
-         l.setFechaFab(gc);
+         System.out.println(gc.get(gc.DATE)+gc.get(gc.MONTH));
+         l.setFechaCad(gc);
          m.setLotes(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
