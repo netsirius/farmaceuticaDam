@@ -16,28 +16,14 @@ public class Medicamento implements Comparable{
     }
 
     private String nombre;
-    private Calendar fechaFab,fechaCad;
-    private int unidades;
     private Double precio;
     private Receta receta;
+    private ArrayList lotes=new ArrayList<Lote>();
     private ArrayList principios=new ArrayList<Principio>();
 
     public String getNombre() {
         return nombre;
     }
-
-    public Calendar getFechaFab() {
-        return fechaFab;
-    }
-
-    public Calendar getFechaCad() {
-        return fechaCad;
-    }
-
-    public int getUnidades() {
-        return unidades;
-    }
-
     public Double getPrecio() {
         return precio;
     }
@@ -52,14 +38,6 @@ public class Medicamento implements Comparable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setFechaFab(Calendar fechaFab) {
-        this.fechaFab = fechaFab;
-    }
-
-    public void setFechaCad(Calendar fechaCad) {
-        this.fechaCad = fechaCad;
     }
 
     public void setPrecio(Double precio) {
