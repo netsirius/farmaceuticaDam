@@ -88,7 +88,8 @@ public class Farmacia {
         
         for (int i = 0; i < medicamentos.size(); i++) {
         Medicamento m=(Medicamento)medicamentos.get(i);
-        if(m.getNombre().contains(nombre))m.mostrarMedicamento();    
+        if(m.getNombre().contains(nombre))m.mostrarMedicamento();
+        
         }
         
          
