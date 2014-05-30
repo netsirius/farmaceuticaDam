@@ -12,4 +12,12 @@ import java.util.Calendar;
  */
 public class Lote {
     private Calendar fechaFab,fechaCad;
+
+    public void setFechaFab(Calendar fechaFab) {
+        this.fechaFab = fechaFab;
+    }
+
+    public void setFechaCad(Calendar fechaCad) {
+        this.fechaCad = fechaCad;
+    }
 }
