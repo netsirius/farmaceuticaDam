@@ -15,6 +15,9 @@ public class Ejecuta {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Farmacia f=new Farmacia();
+        f.altaMedicamento();
+        f.altaMedicamento();
+        f.altaMedicamento();
     }
 }
