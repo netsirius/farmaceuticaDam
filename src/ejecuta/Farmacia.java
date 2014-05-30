@@ -11,6 +11,7 @@ import java.util.*;
  * @author DAM
  */
 public class Farmacia {
+    private int caduca=5;
     private ArrayList medicamentos=new ArrayList<Medicamento>();
     public void altaMedicamento(){
     /*Alta de medicamentos: La aplicación permitirá dar de alta medicamentos al sistema. El usuario 
@@ -25,6 +26,8 @@ public class Farmacia {
      * 
      */
      Scanner teclado=new Scanner(System.in);             
+     GregorianCalendar gc=new GregorianCalendar();
+     gc.getTime();
      System.out.print("Introduzca el nombre del medicamento: ");
      String aux=teclado.nextLine();
      if(medicamentos.contains(aux)){
@@ -37,10 +40,9 @@ public class Farmacia {
          teclado.nextLine();
          }
          Lote l=new Lote();
-         System.out.print("Introduzca la fecha de fabricacion: ");
-         l.setFechaFab(null);
-         System.out.print("Introduzca la fecha de caducidad: ");
-         l.setFechaFab(null);
+         l.setFechaFab(gc);
+         gc.add(Calendar.DATE, caduca);
+         l.setFechaFab(gc);
          aux2.setLotes(l);
          medicamentos.set(medicamentos.indexOf(aux), aux2);
      }
@@ -48,10 +50,9 @@ public class Farmacia {
          Medicamento m=new Medicamento();
          Lote l=new Lote();
          m.setNombre(aux);
-         System.out.print("Introduzca la fecha de fabricacion: ");
-         l.setFechaFab(null);
-         System.out.print("Introduzca la fecha de caducidad: ");
-         l.setFechaFab(null);
+         l.setFechaFab(gc);
+         gc.add(Calendar.DATE, caduca);
+         l.setFechaFab(gc);
          m.setLotes(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
@@ -60,6 +61,7 @@ public class Farmacia {
          m.setReceta(teclado.nextLine());
                 //EMPEZAMOS CON LOS PRINCIPIOS
                 Principio p=new Principio();
+                p.setNombre("vacio");
                 while(!p.getNombre().equals("Q")){
                     p=new Principio();
                     System.out.print("Introduzca el nombre del principio:");
@@ -69,6 +71,7 @@ public class Farmacia {
                     teclado.nextLine();
                     m.setPrincipios(p);
                }
+               medicamentos.add(m);
      }
     
     
