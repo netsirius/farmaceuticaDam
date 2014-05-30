@@ -36,6 +36,10 @@ public class Medicamento implements Comparable{
         return principios;
     }
 
+    public void setLotes(Lote l) {
+         this.lotes.add(l);
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
