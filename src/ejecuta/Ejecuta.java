@@ -17,9 +17,10 @@ public class Ejecuta {
     public static void main(String[] args) {
         Farmacia f=new Farmacia();
         f.altaMedicamento();
-        Medicamento m=(Medicamento)f.getMedicamentos().get(0);
-        Lote l=(Lote)m.getLotes().get(0);
-        System.out.println(l.getFechaCad());
+        //VER FECHA DE CADUCIDAD DE UN MEDICAMENTO
+//        Medicamento m=(Medicamento)f.getMedicamentos().get(0);
+//        Lote l=(Lote)m.getLotes().get(0);
+//        System.out.println(l.getFechaCad());
         f.busquedaMedicamento("ibu");
         f.altaMedicamento();
     }
