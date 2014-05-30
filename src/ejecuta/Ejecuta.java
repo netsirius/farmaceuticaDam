@@ -18,6 +18,7 @@ public class Ejecuta {
         Farmacia f=new Farmacia();
         f.altaMedicamento();
         f.altaMedicamento();
+        f.busquedaMedicamento("ibu");
         f.altaMedicamento();
     }
 }
