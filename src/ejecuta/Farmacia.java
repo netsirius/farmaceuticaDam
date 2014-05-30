@@ -13,6 +13,11 @@ import java.util.*;
 public class Farmacia {
     private int caduca=5;
     private ArrayList medicamentos=new ArrayList<Medicamento>();
+
+    public ArrayList getMedicamentos() {
+        return medicamentos;
+    }
+    
     public void altaMedicamento(){
     /*Alta de medicamentos: La aplicación permitirá dar de alta medicamentos al sistema. El usuario 
     tendrá que indicar toda la información del medicamento (incluyendo sus principios activos) y el 
