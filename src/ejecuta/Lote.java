@@ -13,6 +13,14 @@ import java.util.Calendar;
 public class Lote {
     private Calendar fechaFab,fechaCad;
 
+    public String getFechaFab() {
+        return (fechaFab.get(fechaFab.DATE)+"/"+(fechaFab.get(fechaFab.MONTH)+1)+"/"+(fechaFab.get(fechaFab.YEAR)));
+    }
+
+    public String getFechaCad() {
+        return (fechaCad.get(fechaCad.DATE)+"/"+(fechaCad.get(fechaCad.MONTH)+1)+"/"+(fechaFab.get(fechaFab.YEAR)));
+    }
+
     public void setFechaFab(Calendar fechaFab) {
         this.fechaFab = fechaFab;
     }
