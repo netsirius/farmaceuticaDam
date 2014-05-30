@@ -66,13 +66,13 @@ public class Farmacia {
          m.setReceta(teclado.nextLine());
                 //EMPEZAMOS CON LOS PRINCIPIOS
                 Principio p=new Principio();
-                p.setNombre("vacio");
-                while(!p.getNombre().equals("Q")){
+                String leer="";
+                while(!leer.equals("Q")){
                     p=new Principio();
                     System.out.print("Introduzca el nombre del principio (PARA SALIR PULSE Q):");
-                    String leer=teclado.nextLine();
+                    leer=teclado.nextLine();
                     if(!leer.equals("Q")){
-                    p.setNombre(teclado.nextLine());
+                    p.setNombre(leer);
                     System.out.print("Introduzca el numero de miligramos: ");
                     p.setMiligramos(teclado.nextDouble());
                     teclado.nextLine();
