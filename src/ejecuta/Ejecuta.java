@@ -17,6 +17,7 @@ public class Ejecuta {
     public static void main(String[] args) {
         Farmacia f=new Farmacia();
         f.altaMedicamento();
+        f.altaMedicamento();
         //VER FECHA DE CADUCIDAD DE UN MEDICAMENTO
 //        Medicamento m=(Medicamento)f.getMedicamentos().get(0);
 //        Lote l=(Lote)m.getLotes().get(0);

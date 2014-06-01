@@ -35,9 +35,12 @@ public class Farmacia {
      gc.getTime();
      System.out.print("Introduzca el nombre del medicamento: ");
      String aux=teclado.nextLine();
-     if(medicamentos.contains(aux)){
+     Medicamento n=new Medicamento();
+     n.setNombre(aux);
+     if(medicamentos.contains(n)){
          System.out.println("Medicamento ya existente actualice unidades y precio");
-         Medicamento aux2=(Medicamento)medicamentos.get(medicamentos.indexOf(aux));
+         Medicamento aux2=new Medicamento();
+         aux2=(Medicamento)medicamentos.get(medicamentos.indexOf(n));
          System.out.print("Desea Actualizar el Precio Y/N:");
          if(teclado.nextLine().equals("Y")){
          System.out.print("Introduzca el nuevo precio del medicamento: ");
@@ -49,7 +52,7 @@ public class Farmacia {
          gc.add(Calendar.DATE, caduca);
          l.setFechaCad(gc);
          aux2.setLotes(l);
-         medicamentos.set(medicamentos.indexOf(aux), aux2);
+         medicamentos.set(medicamentos.indexOf(n), aux2);
      }
      else{
          Medicamento m=new Medicamento();
