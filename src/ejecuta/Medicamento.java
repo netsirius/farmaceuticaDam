@@ -74,9 +74,8 @@ public class Medicamento implements Comparable{
     }
      @Override
     public boolean equals(Object o){
-        
-        return false;
-        
+        Medicamento m =(Medicamento) o;
+        return nombre.equals(m.nombre); 
     }
     
 }
