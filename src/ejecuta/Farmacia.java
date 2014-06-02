@@ -122,7 +122,10 @@ public class Farmacia {
     /*Borrado de medicamentos: La aplicación permitirá borrar una serie de medicamentos por nombre 
     (por palabras similares). 
     */
-    
+    for (int i = 0; i < medicamentos.size(); i++) {
+        Medicamento m=(Medicamento)medicamentos.get(i);
+        if(m.getNombre().contains(nombre))medicamentos.remove(medicamentos.get(i));
+    }
     
     
     };
