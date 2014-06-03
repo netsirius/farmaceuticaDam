@@ -22,7 +22,7 @@ public class Ejecuta {
 //        Medicamento m=(Medicamento)f.getMedicamentos().get(0);
 //        Lote l=(Lote)m.getLotes().get(0);
 //        System.out.println(l.getFechaCad());
-        f.busquedaMedicamento("ibu");
+        f.busquedaMedicamento("N4",1);
         f.altaMedicamento();
     }
 }
