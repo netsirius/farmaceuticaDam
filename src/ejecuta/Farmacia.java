@@ -87,25 +87,43 @@ public class Farmacia {
     
     
     };
-    public void busquedaMedicamento(String nombre){
+    public ArrayList busquedaMedicamento(String nombre,int aux){
     /*Búsqueda de medicamentos: La aplicación permitirá buscar medicamentos por nombre o por 
     principios activos. El sistema mostrará toda la información de los medicamentos buscados. La 
     búsqueda tanto por nombre como por principio activo se hará por palabras similares (si el usuario 
     buscara por la palabra “ibu”, le mostraría todos los medicamentos que contengan “ibu” en el 
     nombre).
-    */
-        
-        for (int i = 0; i < medicamentos.size(); i++) {
-        Medicamento m=(Medicamento)medicamentos.get(i);
-        if(m.getNombre().contains(nombre))m.mostrarMedicamento();
+    */ 
+        ArrayList encontrados=new ArrayList<Medicamento>();
+        if(aux==0){
+            for (int i = 0; i < medicamentos.size(); i++) {
+                Medicamento m=(Medicamento)medicamentos.get(i);
+                if(m.getNombre().contains(nombre)){
+                    m.mostrarMedicamento();
+                    encontrados.add(m);
+                }
         
         }
+        }
+        else{
+            for (int i = 0; i < medicamentos.size(); i++) {
+                Medicamento m=(Medicamento)medicamentos.get(i);
+                for (int j = 0; j < m.getLotes().size(); j++) {
+                    Principio p=(Principio)m.getLotes().get(j);
+                    if(p.getNombre().contains(nombre)){
+                    m.mostrarMedicamento();
+                    encontrados.add(m);
+                 }
+                }
+                
         
+        }
+        }
          
         
-    
+    return encontrados;
     };
-    public void ventaMedicamento(String nombre){
+    public void ventaMedicamento(String nombre){ 
     /*Venta de medicamentos: La aplicación permitirá vender una serie de medicamentos. Para la venta 
     se podrá realizar una búsqueda por nombre (por palabras similares) o por principio activo (por 
     palabras similares) y en caso de existir el medicamento se preguntará por el número de unidades a 
