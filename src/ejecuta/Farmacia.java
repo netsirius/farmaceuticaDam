@@ -47,6 +47,9 @@ public class Farmacia {
          aux2.setPrecio(teclado.nextDouble());
          teclado.nextLine();
          }
+         System.out.print("Introduzca las unidades nuevas del medicamento: ");
+         aux2.setUnidades(teclado.nextInt());
+         teclado.nextLine();
          Lote l=new Lote();
          l.setFechaFab(gc);
          gc.add(Calendar.DATE, caduca);
@@ -64,6 +67,9 @@ public class Farmacia {
          m.setLotes(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
+         teclado.nextLine();
+         System.out.print("Introduzca las unidades del medicamento: ");
+         m.setUnidades(teclado.nextInt());
          teclado.nextLine();
          System.out.print("Introduzca si tiene receta o no Y/N:");  
          m.setReceta(teclado.nextLine());
