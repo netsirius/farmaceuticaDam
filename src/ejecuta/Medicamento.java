@@ -49,8 +49,12 @@ public class Medicamento {
         return lotes;
     }
 
-    public void setLotes(Lote l) {
+    public void setLote(Lote l) {
          this.lotes.add(l);
+    }
+
+    public void setLotes(ArrayList lotes) {
+        this.lotes = lotes;
     }
 
     public void setNombre(String nombre) {

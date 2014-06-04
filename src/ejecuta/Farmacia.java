@@ -19,7 +19,21 @@ public class Farmacia {
     public ArrayList getMedicamentos() {
         return medicamentos;
     }
-    
+    public void caducidad(){
+        for (int i = 0; i < medicamentos.size(); i++) {
+            Medicamento m=(Medicamento)medicamentos.get(i);
+            ArrayList al=m.getLotes();
+            ArrayList aux=new ArrayList();
+            for (int j = 0; j < al.size(); j++) {
+                Lote l=(Lote)al.get(i);
+                if(l.caduca())aux.add(j);
+            }
+            for (int j = 0; j< aux.size(); j++) {
+            al.remove(((int)aux.get(j)-i));
+            }
+            m.setLotes(al);
+        }
+    }
     public void altaMedicamento(){
     /*Alta de medicamentos: La aplicación permitirá dar de alta medicamentos al sistema. El usuario 
     tendrá que indicar toda la información del medicamento (incluyendo sus principios activos) y el 
@@ -58,7 +72,7 @@ public class Farmacia {
          System.out.print("Introduzca las unidades nuevas del medicamento: ");
          l.setUnidades(teclado.nextInt());
          teclado.nextLine();
-         aux2.setLotes(l);
+         aux2.setLote(l);
          aux2.setUnidadesTotales(l.getUnidades());
          medicamentos.set(medicamentos.indexOf(n), aux2);
      }
@@ -73,7 +87,7 @@ public class Farmacia {
          l.setUnidades(teclado.nextInt());
          teclado.nextLine();
          m.setUnidadesTotales(l.getUnidades());
-         m.setLotes(l);
+         m.setLote(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
          teclado.nextLine();

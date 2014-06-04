@@ -16,6 +16,7 @@ public class Ejecuta {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         ArrayList encontrados=new ArrayList<Medicamento>();
         Farmacia f=new Farmacia();

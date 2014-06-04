@@ -5,7 +5,7 @@
 package ejecuta;
 
 import java.util.Calendar;
-
+import java.util.*;
 /**
  *
  * @author DAM
@@ -13,7 +13,21 @@ import java.util.Calendar;
 public class Lote {
     private Calendar fechaFab,fechaCad;
     private int unidades;
+    public boolean caduca(){
+        GregorianCalendar fecha1=new GregorianCalendar();
+        fecha1.setTime(new Date());
+        // Comparo las fechas y despliego el resultado 
+        switch (fechaCad.compareTo(fecha1)){ 
+        case 1: 
+        return false;
+        case 0: 
+        return true;
+        case -1: 
+        return true;
+        } 
+        return false;
 
+    }
     public void setUnidades(int unidades) {
         this.unidades = unidades;
     }
