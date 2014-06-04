@@ -17,6 +17,7 @@ public class Medicamento implements Comparable{
 
     private String nombre;
     private Double precio;
+    private int unidades;
     private Receta receta;
     private ArrayList lotes=new ArrayList<Lote>();
     private ArrayList principios=new ArrayList<Principio>();
