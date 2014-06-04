@@ -22,6 +22,10 @@ public class Medicamento implements Comparable{
     private ArrayList lotes=new ArrayList<Lote>();
     private ArrayList principios=new ArrayList<Principio>();
 
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
+    }
+
     public String getNombre() {
         return nombre;
     }
