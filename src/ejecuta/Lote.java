@@ -12,7 +12,16 @@ import java.util.Calendar;
  */
 public class Lote {
     private Calendar fechaFab,fechaCad;
+    private int unidades;
 
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+    
     public String getFechaFab() {
         return (fechaFab.get(fechaFab.DATE)+"/"+(fechaFab.get(fechaFab.MONTH)+1)+"/"+(fechaFab.get(fechaFab.YEAR)));
     }
