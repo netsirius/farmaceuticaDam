@@ -14,16 +14,24 @@ public class Medicamento implements Comparable{
     // Tipos de Medicamento.
     CONRECETA, SINRECETA;
     }
-
+    private int unidadesTotales=0;
     private String nombre;
     private Double precio;
     private Receta receta;
     private ArrayList lotes=new ArrayList<Lote>();
     private ArrayList principios=new ArrayList<Principio>();
 
+    public int getUnidadesTotales() {
+        return unidadesTotales;
+    }
+
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setUnidadesTotales(int unidadesTotales) {
+        this.unidadesTotales += unidadesTotales;
     }
     public Double getPrecio() {
         return precio;
@@ -64,9 +72,25 @@ public class Medicamento implements Comparable{
     }
 
     
-    
+    public int restarLote(int unidades){
+        if(unidades==-1){
+            Lote l=(Lote)this.lotes.get(0);
+            int aux=l.getUnidades();
+            this.lotes.remove(0);
+            return aux;
+            
+        }
+        else{
+            Lote l=(Lote)this.lotes.get(0);
+            l.setUnidades(l.getUnidades()-unidades);
+            return unidades;
+        }
+        
+        
+    }
     public void mostrarMedicamento(){
-        System.out.println("Nombre: "+this.nombre);
+        System.out.println("NOMBRE: "+this.nombre+"         UNIDADES:"+this.unidadesTotales);
+        System.out.println("--------------------------------------------");
         System.out.println("Precio: "+this.precio);
         System.out.println("Receta: "+this.receta);
         System.out.println("Principios: ");

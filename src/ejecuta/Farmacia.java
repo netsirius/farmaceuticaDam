@@ -4,6 +4,7 @@
  */
 package ejecuta;
 
+import ejecuta.Medicamento.Receta;
 import java.util.*;
 
 /**
@@ -11,6 +12,7 @@ import java.util.*;
  * @author DAM
  */
 public class Farmacia {
+    Scanner teclado=new Scanner(System.in);  
     private int caduca=5;
     private ArrayList medicamentos=new ArrayList<Medicamento>();
 
@@ -30,9 +32,11 @@ public class Farmacia {
     unidades de cada lote.
      * 
      */
-     Scanner teclado=new Scanner(System.in);             
+                
      GregorianCalendar gc=new GregorianCalendar();
-     gc.getTime();
+     GregorianCalendar gc2=new GregorianCalendar();
+     gc.setTime(new Date());
+     gc2.setTime(new Date());
      System.out.print("Introduzca el nombre del medicamento: ");
      String aux=teclado.nextLine();
      Medicamento n=new Medicamento();
@@ -49,12 +53,13 @@ public class Farmacia {
          }
          Lote l=new Lote();
          l.setFechaFab(gc);
-         gc.add(Calendar.DATE, caduca);
-         l.setFechaCad(gc);
+         gc2.add(Calendar.DATE, caduca);
+         l.setFechaCad(gc2);
          System.out.print("Introduzca las unidades nuevas del medicamento: ");
          l.setUnidades(teclado.nextInt());
          teclado.nextLine();
          aux2.setLotes(l);
+         aux2.setUnidadesTotales(l.getUnidades());
          medicamentos.set(medicamentos.indexOf(n), aux2);
      }
      else{
@@ -62,11 +67,12 @@ public class Farmacia {
          Lote l=new Lote();
          m.setNombre(aux);
          l.setFechaFab(gc);
-         gc.add(Calendar.DATE, caduca);
-         l.setFechaCad(gc);
+         gc2.add(Calendar.DATE, caduca);
+         l.setFechaCad(gc2);
          System.out.print("Introduzca las unidades del medicamento: ");
          l.setUnidades(teclado.nextInt());
          teclado.nextLine();
+         m.setUnidadesTotales(l.getUnidades());
          m.setLotes(l);
          System.out.print("Introduzca el precio del medicamento: ");
          m.setPrecio(teclado.nextDouble());
@@ -94,19 +100,24 @@ public class Farmacia {
     
     
     };
-    public ArrayList busquedaMedicamento(String nombre,int aux){
+    public ArrayList<Medicamento> busquedaMedicamento(String nombre){
     /*Búsqueda de medicamentos: La aplicación permitirá buscar medicamentos por nombre o por 
     principios activos. El sistema mostrará toda la información de los medicamentos buscados. La 
     búsqueda tanto por nombre como por principio activo se hará por palabras similares (si el usuario 
     buscara por la palabra “ibu”, le mostraría todos los medicamentos que contengan “ibu” en el 
     nombre).
     */ 
+        System.out.println("0-Por medicamento");
+        System.out.println("1-Por principio");
+        int aux=teclado.nextInt();
         ArrayList encontrados=new ArrayList<Medicamento>();
         if(aux==0){
             for (int i = 0; i < medicamentos.size(); i++) {
                 Medicamento m=(Medicamento)medicamentos.get(i);
                 if(m.getNombre().contains(nombre)){
+                    System.out.println("SELECCION. "+(i+1)+"-");
                     m.mostrarMedicamento();
+                    System.out.println();
                     encontrados.add(m);
                 }
         
@@ -130,7 +141,7 @@ public class Farmacia {
         
     return encontrados;
     };
-    public void ventaMedicamento(String nombre){ 
+    public double ventaMedicamento(String nombre){ 
     /*Venta de medicamentos: La aplicación permitirá vender una serie de medicamentos. Para la venta 
     se podrá realizar una búsqueda por nombre (por palabras similares) o por principio activo (por 
     palabras similares) y en caso de existir el medicamento se preguntará por el número de unidades a 
@@ -139,9 +150,106 @@ public class Farmacia {
     usuario las unidades que vayan a caducar antes.
     */ 
         
+        ArrayList al=new ArrayList<Medicamento>();
+        al=this.busquedaMedicamento(nombre);
+        double precioTotal=0;
+        if(al.size()==1){      
+           Medicamento m=(Medicamento)al.get(0);
+           if(m.getReceta()==Receta.CONRECETA){
+               System.out.println();
+               System.out.println();
+               System.out.println("PARA LA VENTA DE ESTE MEDICAMENTO SE DEBE ^RESENTAR RECETA MEDICA!!!!!");
+               System.out.println();
+               System.out.println();
+           }
+           System.out.print("Seleccione cuantas unidades desea: "); 
+           int aux=teclado.nextInt();
+           teclado.nextLine();
+           if(aux<m.getUnidadesTotales()){
+               int aux2=0,i=0;
+               ArrayList al2=m.getLotes();
+               while(aux2<=aux){
+                   Lote l=(Lote)al2.get(i);
+                   aux2+=l.getUnidades();
+                   i++;
+               }
+               aux2=0;
+               for (int j = 0; j < (i-1); j++) {
+                   aux2+=m.restarLote(-1);
+               }
+               if(aux2<aux){
+                   m.restarLote(aux-aux2);
+               }
+               m.setUnidadesTotales(-aux);
+               System.out.println();
+               System.out.println();
+               System.out.println("ACTUALIZACION:-----------");
+               m.mostrarMedicamento();          
+               System.out.println();
+               System.out.println();
+               System.out.println("PRECIO TOTAL: ------------ "+(m.getPrecio()*aux));
+               return (m.getPrecio()*aux);
+              
+           }
+           else{
+               System.out.println("No hay suficientes existencias");
+           }
+        }else{
+           System.out.print("Seleccione uno de los anteriores,introduzca el numero de seleccion: "); 
+           int aux=teclado.nextInt();
+           teclado.nextLine();
+           while(aux<1 || aux>al.size()){
+              System.out.print("Seleccione uno de los anteriores,introduzca el numero de seleccion: "); 
+              aux=teclado.nextInt();
+              teclado.nextLine();
+           }
+           Medicamento m=(Medicamento)al.get(aux-1);
+           m.mostrarMedicamento();
+           if(m.getReceta()==Receta.CONRECETA){
+               System.out.println();
+               System.out.println();
+               System.out.println("PARA LA VENTA DE ESTE MEDICAMENTO SE DEBE ^RESENTAR RECETA MEDICA!!!!!");
+               System.out.println();
+               System.out.println();
+           }
+           
+           System.out.print("Seleccione cuantas unidades desea: "); 
+           aux=teclado.nextInt();
+           teclado.nextLine();
+           if(aux<=m.getUnidadesTotales()){
+               int aux2=0,i=0;
+               ArrayList al2=m.getLotes();
+               while(aux2<=aux){
+                   Lote l=(Lote)al2.get(i);
+                   aux2+=l.getUnidades();
+                   i++;
+               }
+               aux2=0;
+               for (int j = 0; j < (i-1); j++) {
+                   aux2+=m.restarLote(-1);
+               }
+               if(aux2<aux){
+                   m.restarLote(aux-aux2);
+               }
+              m.setUnidadesTotales(-aux);
+               System.out.println();
+               System.out.println();
+               System.out.println("ACTUALIZACION:-----------");
+               m.mostrarMedicamento();          
+               System.out.println();
+               System.out.println();
+               System.out.println("PRECIO TOTAL: ------------ "+(m.getPrecio()*aux));
+               return (m.getPrecio()*aux);
+               
+           }
+           else{
+               System.out.println("No hay suficientes existencias");
+           }
+           
+        }
+        
     
-    
-    
+        return -1;
     };
     public void borrarMedicamento(String nombre){
     /*Borrado de medicamentos: La aplicación permitirá borrar una serie de medicamentos por nombre 

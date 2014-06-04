@@ -25,9 +25,6 @@ public class Ejecuta {
 //        Medicamento m=(Medicamento)f.getMedicamentos().get(0);
 //        Lote l=(Lote)m.getLotes().get(0);
 //        System.out.println(l.getFechaCad());
-        encontrados=f.busquedaMedicamento("A",0);
-        f.borrarMedicamento("ABU");
-        encontrados=f.busquedaMedicamento("A",0);
-        int A=0;
+        System.out.println(f.ventaMedicamento("A"));
     }
 }
