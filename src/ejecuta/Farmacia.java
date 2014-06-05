@@ -197,7 +197,7 @@ public class Farmacia implements Serializable {
            if(m.getReceta()==Receta.CONRECETA){
                System.out.println();
                System.out.println();
-               System.out.println("PARA LA VENTA DE ESTE MEDICAMENTO SE DEBE ^RESENTAR RECETA MEDICA!!!!!");
+               System.out.println("PARA LA VENTA DE ESTE MEDICAMENTO SE DEBE PRESENTAR RECETA MEDICA!!!!!");
                System.out.println();
                System.out.println();
            }
