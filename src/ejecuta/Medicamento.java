@@ -8,8 +8,9 @@ package ejecuta;
  *
  * @author DAM
  */
+import java.io.Serializable;
 import java.util.*;
-public class Medicamento {
+public class Medicamento implements Serializable {
     enum Receta {
     // Tipos de Medicamento.
     CONRECETA, SINRECETA;
@@ -25,7 +26,6 @@ public class Medicamento {
         return unidadesTotales;
     }
 
-
     public String getNombre() {
         return nombre;
     }
@@ -33,6 +33,7 @@ public class Medicamento {
     public void setUnidadesTotales(int unidadesTotales) {
         this.unidadesTotales += unidadesTotales;
     }
+    
     public Double getPrecio() {
         return precio;
     }

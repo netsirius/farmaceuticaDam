@@ -6,18 +6,43 @@ package ejecuta;
 
 import ejecuta.Medicamento.Receta;
 import java.util.*;
-
+import com.teide.dam.aortiz.ioutil.OperationsIO;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author DAM
  */
-public class Farmacia {
-    Scanner teclado=new Scanner(System.in);  
+public class Farmacia implements Serializable {
+
+    public void setMedicamentos(ArrayList medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+    
     private int caduca=5;
     private ArrayList medicamentos=new ArrayList<Medicamento>();
 
-    public ArrayList getMedicamentos() {
+    public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
+    }
+    public void abrirFarmacia(){
+        OperationsIO util =new OperationsIO("datos");
+        try {
+            medicamentos=(ArrayList<Medicamento>)util.read();
+        } catch (IOException ex) {
+            Logger.getLogger(Farmacia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Farmacia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void cerrarFarmacia() {
+        OperationsIO util =new OperationsIO("datos");
+        try {
+            util.write(medicamentos);
+        } catch (IOException ex) {
+            Logger.getLogger(Farmacia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void caducidad(){
         for (int i = 0; i < medicamentos.size(); i++) {
@@ -34,7 +59,7 @@ public class Farmacia {
             m.setLotes(al);
         }
     }
-    public void altaMedicamento(){
+    public void altaMedicamento(String aux){
     /*Alta de medicamentos: La aplicación permitirá dar de alta medicamentos al sistema. El usuario 
     tendrá que indicar toda la información del medicamento (incluyendo sus principios activos) y el 
     número de unidades fabricadas. Si el medicamento que se intenta dar de alta ya existiera en el 
@@ -46,13 +71,11 @@ public class Farmacia {
     unidades de cada lote.
      * 
      */
-                
+     Scanner teclado=new Scanner(System.in);            
      GregorianCalendar gc=new GregorianCalendar();
      GregorianCalendar gc2=new GregorianCalendar();
      gc.setTime(new Date());
      gc2.setTime(new Date());
-     System.out.print("Introduzca el nombre del medicamento: ");
-     String aux=teclado.nextLine();
      Medicamento n=new Medicamento();
      n.setNombre(aux);
      if(medicamentos.contains(n)){
@@ -60,7 +83,8 @@ public class Farmacia {
          Medicamento aux2=new Medicamento();
          aux2=(Medicamento)medicamentos.get(medicamentos.indexOf(n));
          System.out.print("Desea Actualizar el Precio Y/N:");
-         if(teclado.nextLine().equals("Y")){
+         String AUX=teclado.nextLine();
+         if(AUX.equals("Y")){
          System.out.print("Introduzca el nuevo precio del medicamento: ");
          aux2.setPrecio(teclado.nextDouble());
          teclado.nextLine();
@@ -120,7 +144,8 @@ public class Farmacia {
     búsqueda tanto por nombre como por principio activo se hará por palabras similares (si el usuario 
     buscara por la palabra “ibu”, le mostraría todos los medicamentos que contengan “ibu” en el 
     nombre).
-    */ 
+    */  Scanner teclado=new Scanner(System.in);  
+        System.out.println("LA BUSQUEDA SE REALIZARA POR:");
         System.out.println("0-Por medicamento");
         System.out.println("1-Por principio");
         int aux=teclado.nextInt();
@@ -163,7 +188,7 @@ public class Farmacia {
     medicamentos con receta se le pedirá al usuario una confirmación adicional. El sistema venderá al 
     usuario las unidades que vayan a caducar antes.
     */ 
-        
+        Scanner teclado=new Scanner(System.in);  
         ArrayList al=new ArrayList<Medicamento>();
         al=this.busquedaMedicamento(nombre);
         double precioTotal=0;
@@ -269,16 +294,42 @@ public class Farmacia {
     /*Borrado de medicamentos: La aplicación permitirá borrar una serie de medicamentos por nombre 
     (por palabras similares). 
     */
-    ArrayList aux=new ArrayList();
-    for (int i = 0; i <medicamentos.size(); i++) {
-        Medicamento m=(Medicamento)medicamentos.get(i);
-        if(m.getNombre().contains(nombre))aux.add(i);
-    }
-        for (int i = 0; i < aux.size(); i++) {
-            medicamentos.remove(((int)aux.get(i)-i));
-        }
+        Scanner teclado=new Scanner(System.in);  
+         ArrayList al=new ArrayList<Medicamento>();
+        al=this.busquedaMedicamento(nombre);
+        double precioTotal=0;
+        if(al.size()==1){   
+           Medicamento m=(Medicamento)al.get(0);
+           medicamentos.remove(m);
+           System.out.println();
+           System.out.println();
+           System.out.println("ESTE MEDICAMENTO FUE BORRADO");
+           System.out.println();
+           System.out.println();
+        }else{
+           System.out.print("Seleccione uno de los anteriores,introduzca el numero de seleccion: "); 
+           int aux=teclado.nextInt();
+           teclado.nextLine();
+           while(aux<1 || aux>al.size()){
+              System.out.print("Seleccione uno de los anteriores,introduzca el numero de seleccion: "); 
+              aux=teclado.nextInt();
+              teclado.nextLine();
+           }
+           Medicamento m=(Medicamento)al.get(aux-1);
+           m.mostrarMedicamento();
+           medicamentos.remove(m);
+           System.out.println();
+           System.out.println();
+           System.out.println("ESTE MEDICAMENTO FUE BORRADO");
+           System.out.println();
+           System.out.println();
     
-    };
+        };
+               
+           }
+           
+           
+        
         
     
-}
+    }

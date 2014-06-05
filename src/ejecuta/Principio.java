@@ -4,11 +4,13 @@
  */
 package ejecuta;
 
+import java.io.Serializable;
+
 /**
  *
  * @author DAM
  */
-public class Principio {
+public class Principio implements Serializable{
     private String nombre;
     private double miligramos;
 
