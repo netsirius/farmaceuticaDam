@@ -144,37 +144,39 @@ public class Farmacia implements Serializable {
     búsqueda tanto por nombre como por principio activo se hará por palabras similares (si el usuario 
     buscara por la palabra “ibu”, le mostraría todos los medicamentos que contengan “ibu” en el 
     nombre).
-    */  Scanner teclado=new Scanner(System.in);  
-        System.out.println("LA BUSQUEDA SE REALIZARA POR:");
-        System.out.println("0-Por medicamento");
-        System.out.println("1-Por principio");
-        int aux=teclado.nextInt();
+    */    
         ArrayList encontrados=new ArrayList<Medicamento>();
-        if(aux==0){
-            for (int i = 0; i < medicamentos.size(); i++) {
-                Medicamento m=(Medicamento)medicamentos.get(i);
-                if(m.getNombre().contains(nombre)){
-                    System.out.println("SELECCION. "+(i+1)+"-");
-                    m.mostrarMedicamento();
-                    System.out.println();
-                    encontrados.add(m);
-                }
         
-        }
-        }
+        if (medicamentos.size()==0)System.out.println("*Imposible realizar la busqueda, no hay medicamentos en la farmaceutica*\n"); 
         else{
+            Scanner teclado=new Scanner(System.in);
+            System.out.println("LA BUSQUEDA SE REALIZARA POR:");
+            System.out.println("0-Por medicamento");
+            System.out.println("1-Por principio");
+            int aux=teclado.nextInt();
+            if(aux==0){
             for (int i = 0; i < medicamentos.size(); i++) {
-                Medicamento m=(Medicamento)medicamentos.get(i);
-                for (int j = 0; j < m.getLotes().size(); j++) {
-                    Principio p=(Principio)m.getLotes().get(j);
-                    if(p.getNombre().contains(nombre)){
-                    m.mostrarMedicamento();
-                    encontrados.add(m);
-                 }
+            Medicamento m=(Medicamento)medicamentos.get(i);
+            if(m.getNombre().contains(nombre)){
+                System.out.println("SELECCION. "+(i+1)+"-");
+                m.mostrarMedicamento();
+                System.out.println();
+                encontrados.add(m);
                 }
-                
-        
-        }
+            }
+            }
+            else{
+                for (int i = 0; i < medicamentos.size(); i++) {
+                    Medicamento m=(Medicamento)medicamentos.get(i);
+                    for (int j = 0; j < m.getLotes().size(); j++) {
+                        Principio p=(Principio)m.getLotes().get(j);
+                        if(p.getNombre().contains(nombre)){
+                        m.mostrarMedicamento();
+                        encontrados.add(m);
+                        }
+                    }
+                }
+            }
         }
          
         
