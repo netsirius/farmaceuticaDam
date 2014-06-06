@@ -306,7 +306,11 @@ public class Farmacia implements Serializable {
            System.out.println("ESTE MEDICAMENTO FUE BORRADO");
            System.out.println();
            System.out.println();
-        }else{
+        }
+        else if(al.size()==0){
+            System.out.println("Lo sentimos no existe este medicamento, por lo tanto no puede ser borrado");
+        }
+        else{
            System.out.print("Seleccione uno de los anteriores,introduzca el numero de seleccion: "); 
            int aux=teclado.nextInt();
            teclado.nextLine();
