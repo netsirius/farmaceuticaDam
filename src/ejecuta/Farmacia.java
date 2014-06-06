@@ -163,6 +163,7 @@ public class Farmacia implements Serializable {
                 System.out.println();
                 encontrados.add(m);
                 }
+            else System.out.println("Nuestra farmaceutica no contiene el medicamento que esta buscando.");
             }
             }
             else{
@@ -174,6 +175,7 @@ public class Farmacia implements Serializable {
                         m.mostrarMedicamento();
                         encontrados.add(m);
                         }
+                        else System.out.println("Nuestra farmaceutica no contiene el medicamento que esta buscando.");
                     }
                 }
             }
