@@ -110,12 +110,14 @@ public class Medicamento implements Serializable {
         }
         
         System.out.println("Lotes:");
+        System.out.println("Existen " +lotes.size()+ " lotes de este medicamento");
         if(lotes.size()==0){
             System.out.println("----EMPTY");
         }
         else{
          for (int i = 0; i < lotes.size(); i++) {
             Lote p=(Lote)this.lotes.get(i);
+            System.out.println("Lote "+ (i+1)+":");
             System.out.println("Unidades: "+p.getUnidades());
             System.out.println("Fecha caducidad: "+p.getFechaCad()+"  Fecha fabricacion: "+p.getFechaFab());
         }
